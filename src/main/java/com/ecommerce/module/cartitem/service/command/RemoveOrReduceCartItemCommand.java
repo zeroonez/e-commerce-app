@@ -3,7 +3,7 @@ package com.ecommerce.module.cartitem.service.command;
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
-public class AddItemToCartItemCommand {
+public class RemoveOrReduceCartItemCommand {
 
 	@NotNull
 	private UUID cartId;
@@ -11,8 +11,10 @@ public class AddItemToCartItemCommand {
 	@NotNull
 	private UUID itemId;
 
-	@NotNull
-	private int quantity;
+	public RemoveOrReduceCartItemCommand(UUID cartId, UUID itemId) {
+		this.cartId = cartId;
+		this.itemId = itemId;
+	}
 
 	public UUID getCartId() {
 		return cartId;
@@ -29,13 +31,4 @@ public class AddItemToCartItemCommand {
 	public void setItemId(UUID itemId) {
 		this.itemId = itemId;
 	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
 }

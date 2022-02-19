@@ -1,6 +1,7 @@
 package com.ecommerce.module.cartitem.service;
 
 import com.ecommerce.module.cartitem.entity.CartItem;
+import com.ecommerce.module.cartitem.exception.CartItemNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -20,8 +21,9 @@ public class CartItemFinderService {
 		return new HashSet<>(cartItemRepository.findAllById(ids));
 	}
 
-	public CartItem getByCartIdAndItemId(UUID cartId, UUID itemId) {
-		return cartItemRepository.findByCartIdAndItemId(cartId, itemId);
+	public CartItem getByCartIdAndItemId(UUID cartId, UUID itemId) throws CartItemNotFoundException {
+		return cartItemRepository.findByCartIdAndItemId(cartId, itemId)
+				.orElseThrow(CartItemNotFoundException::new);
 	}
 
 }

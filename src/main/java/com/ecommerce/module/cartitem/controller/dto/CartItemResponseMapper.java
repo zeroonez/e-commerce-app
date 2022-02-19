@@ -28,7 +28,6 @@ public class CartItemResponseMapper {
 	public CartItemResponse mapSingle(CartItem cartItem) throws ItemNotFoundException {
 		Item item = itemFinderService.getById(cartItem.getItemId());
 		return new CartItemResponse(
-				cartItem.getId(),
 				itemResponseMapper.mapSingle(item),
 				cartItem.getQuantity()
 		);

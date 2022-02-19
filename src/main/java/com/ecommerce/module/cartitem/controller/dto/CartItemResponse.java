@@ -8,26 +8,14 @@ import java.util.UUID;
 public class CartItemResponse {
 
 	@NotNull
-	private UUID id;
-
-	@NotNull
 	private ItemResponse item;
 
 	@NotNull
 	private int quantity;
 
-	public CartItemResponse(UUID id, ItemResponse item, int quantity) {
-		this.id = id;
+	public CartItemResponse(ItemResponse item, int quantity) {
 		this.item = item;
 		this.quantity = quantity;
-	}
-
-	public UUID getId() {
-		return id;
-	}
-
-	public void setId(UUID id) {
-		this.id = id;
 	}
 
 	public ItemResponse getItem() {
