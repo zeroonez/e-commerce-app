@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -19,7 +20,7 @@ public class Cart {
 	private UUID id;
 
 	@Convert(converter = UuidSetConverter.class)
-	private Set<UUID> cartItemIds;
+	private Set<UUID> cartItemIds = new HashSet<>();
 
 	public UUID getId() {
 		return id;

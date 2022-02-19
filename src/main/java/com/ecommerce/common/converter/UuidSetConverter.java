@@ -14,7 +14,7 @@ public class UuidSetConverter implements AttributeConverter<Set<UUID>, String> {
 
 	@Override
 	public String convertToDatabaseColumn(Set<UUID> uuids) {
-		if (uuids == null) {
+		if (uuids.isEmpty()) {
 			return "";
 		}
 		Set<String> uuidsInStrings = uuids.stream().map(UUID::toString).collect(Collectors.toSet());
@@ -23,9 +23,8 @@ public class UuidSetConverter implements AttributeConverter<Set<UUID>, String> {
 
 	@Override
 	public Set<UUID> convertToEntityAttribute(String objectsString) {
-		if (objectsString == null) {
+		if (objectsString == null || objectsString.equals("")) {
 			return Collections.emptySet();
-
 		}
 		return Arrays.stream(objectsString.split(SPLIT_CHAR)).map(UUID::fromString).collect(Collectors.toSet());
 	}
