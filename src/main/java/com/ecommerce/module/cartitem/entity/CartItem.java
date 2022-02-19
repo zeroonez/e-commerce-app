@@ -1,14 +1,20 @@
-package com.ecommerce.module.cart.service.command;
+package com.ecommerce.module.cartitem.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
-public class AddItemToCartCommand {
+@Entity
+public class CartItem {
+
+	@Id
+	@GeneratedValue(generator = "uuid2")
+	@NotNull
+	private UUID id;
 
 	@NotNull
-	@JsonIgnore
 	private UUID cartId;
 
 	@NotNull
@@ -16,6 +22,14 @@ public class AddItemToCartCommand {
 
 	@NotNull
 	private int quantity;
+
+	public UUID getId() {
+		return id;
+	}
+
+	public void setId(UUID id) {
+		this.id = id;
+	}
 
 	public UUID getCartId() {
 		return cartId;

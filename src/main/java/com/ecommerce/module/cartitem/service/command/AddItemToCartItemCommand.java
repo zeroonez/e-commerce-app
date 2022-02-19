@@ -1,14 +1,11 @@
-package com.ecommerce.module.cart.service.command;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+package com.ecommerce.module.cartitem.service.command;
 
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
-public class AddItemToCartCommand {
+public class AddItemToCartItemCommand {
 
 	@NotNull
-	@JsonIgnore
 	private UUID cartId;
 
 	@NotNull
@@ -40,4 +37,5 @@ public class AddItemToCartCommand {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+
 }

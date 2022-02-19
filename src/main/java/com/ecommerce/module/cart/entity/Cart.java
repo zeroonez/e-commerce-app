@@ -19,7 +19,7 @@ public class Cart {
 	private UUID id;
 
 	@Convert(converter = UuidSetConverter.class)
-	private Set<UUID> itemIds;
+	private Set<UUID> cartItemIds;
 
 	public UUID getId() {
 		return id;
@@ -29,11 +29,11 @@ public class Cart {
 		this.id = id;
 	}
 
-	public Set<UUID> getItemIds() {
-		return itemIds;
+	public Set<UUID> getCartItemIds() {
+		return cartItemIds;
 	}
 
-	public void setItemIds(Set<UUID> itemIds) {
-		this.itemIds = itemIds;
+	public void setCartItemIds(Set<UUID> cartItemIds) {
+		this.cartItemIds = cartItemIds;
 	}
 }
