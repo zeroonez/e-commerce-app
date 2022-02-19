@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Service
@@ -36,8 +38,7 @@ public class CartService {
 		return cartRepository.save(new Cart());
 	}
 
-	public Cart addItemToCart(@Valid AddItemToCartCommand command) throws CartNotFoundException, ItemNotFoundException,
-			CartItemNotFoundException {
+	public Cart addItemToCart(@Valid AddItemToCartCommand command) throws CartNotFoundException, ItemNotFoundException {
 		Cart cart = cartFinderService.getById(command.getCartId());
 
 		CartItem cartItem = cartItemService.createCartItem(new CreateCartItemCommand(
@@ -45,8 +46,9 @@ public class CartService {
 				command.getItemId(),
 				command.getQuantity()
 		));
-
-		cart.getCartItemIds().add(cartItem.getId());
+		Set<UUID> cartItems = new HashSet<>(cart.getCartItemIds());
+		cartItems.add(cartItem.getId());
+		cart.setCartItemIds(cartItems);
 		return cartRepository.save(cart);
 	}
 

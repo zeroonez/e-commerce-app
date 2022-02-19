@@ -29,9 +29,9 @@ public class CartItemService {
 		this.itemFinderService = itemFinderService;
 	}
 
-	public CartItem createCartItem(@Valid CreateCartItemCommand command) throws ItemNotFoundException,
-			CartItemNotFoundException {
-		CartItem cartItem = cartItemFinderService.getByCartIdAndItemId(command.getCartId(), command.getItemId());
+	public CartItem createCartItem(@Valid CreateCartItemCommand command) throws ItemNotFoundException {
+		CartItem cartItem = cartItemRepository.findByCartIdAndItemId(command.getCartId(), command.getItemId())
+				.orElse(null);
 		Item item = itemFinderService.getById(command.getItemId());
 		if (cartItem != null) {
 			cartItem.setQuantity(command.getQuantity());
@@ -51,10 +51,10 @@ public class CartItemService {
 		return cartIdToBeRemoved;
 	}
 
-	public CartItem reduceCartItemQuantity(@Valid RemoveOrReduceCartItemCommand command) throws CartItemNotFoundException {
+	public void reduceCartItemQuantity(@Valid RemoveOrReduceCartItemCommand command) throws CartItemNotFoundException {
 		CartItem cartItem = cartItemFinderService.getByCartIdAndItemId(command.getCartId(), command.getItemId());
 		int newQuantity = cartItem.getQuantity() - 1 < 1 ? 0 : cartItem.getQuantity() - 1;
 		cartItem.setQuantity(newQuantity);
-		return cartItemRepository.save(cartItem);
+		cartItemRepository.save(cartItem);
 	}
 }
