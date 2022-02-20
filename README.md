@@ -73,7 +73,7 @@ Decrease item stock
 }
 ```
 
-
+You can download postman collection [here](https://github.com/zeroonez/e-commerce-app/blob/main/postman/E-Commerce-app.postman_collection.json)
 
 
 
