@@ -8,13 +8,13 @@ import org.springframework.stereotype.Component;
 public class ItemResponseMapper {
 
 	public ItemResponse mapSingle(Item item) {
-		ItemResponse itemResponse = new ItemResponse();
-		itemResponse.setId(item.getId());
-		itemResponse.setName(item.getName());
-		itemResponse.setDescription(item.getDescription());
-		itemResponse.setPrice(item.getPrice());
-		itemResponse.setStock(item.getStock());
-		return itemResponse;
+		return new ItemResponse(
+				item.getId(),
+				item.getName(),
+				item.getDescription(),
+				item.getPrice(),
+				item.getStock()
+		);
 	}
 
 }

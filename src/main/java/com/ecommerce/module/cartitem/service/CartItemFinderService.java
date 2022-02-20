@@ -26,4 +26,8 @@ public class CartItemFinderService {
 				.orElseThrow(CartItemNotFoundException::new);
 	}
 
+	public Set<CartItem> getALLByCartId(UUID cartId) {
+		return cartItemRepository.findAllByCartId(cartId);
+	}
+
 }

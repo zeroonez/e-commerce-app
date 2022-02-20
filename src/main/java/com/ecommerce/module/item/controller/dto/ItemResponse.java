@@ -10,9 +10,17 @@ public class ItemResponse {
 
 	private String description;
 
-	private float price;
+	private double price;
 
 	private int stock;
+
+	public ItemResponse(UUID id, String name, String description, double price, int stock) {
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.stock = stock;
+	}
 
 	public UUID getId() {
 		return id;
@@ -38,11 +46,11 @@ public class ItemResponse {
 		this.description = description;
 	}
 
-	public float getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(float price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 

@@ -11,9 +11,12 @@ public class CartResponse {
 
 	private Set<CartItemResponse> cartItems;
 
-	public CartResponse(UUID id, Set<CartItemResponse> cartItems) {
+	private double totalPrice;
+
+	public CartResponse(UUID id, Set<CartItemResponse> cartItems, double totalPrice) {
 		this.id = id;
 		this.cartItems = cartItems;
+		this.totalPrice = totalPrice;
 	}
 
 	public UUID getId() {
@@ -32,4 +35,11 @@ public class CartResponse {
 		this.cartItems = cartItems;
 	}
 
+	public double getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
 }

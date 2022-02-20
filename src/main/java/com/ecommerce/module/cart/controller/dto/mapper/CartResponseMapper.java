@@ -20,6 +20,6 @@ public class CartResponseMapper {
 
 	public CartResponse mapSingle(Cart cart) throws ItemNotFoundException {
 		Set<CartItemResponse> cartItemResponses = cartItemResponseMapper.mapSet(cart.getCartItemIds());
-		return new CartResponse(cart.getId(), cartItemResponses);
+		return new CartResponse(cart.getId(), cartItemResponses, cart.getTotalPrice());
 	}
 }

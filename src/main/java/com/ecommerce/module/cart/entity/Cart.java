@@ -22,6 +22,8 @@ public class Cart {
 	@Convert(converter = UuidSetConverter.class)
 	private Set<UUID> cartItemIds = new HashSet<>();
 
+	private double totalPrice;
+
 	public UUID getId() {
 		return id;
 	}
@@ -36,5 +38,13 @@ public class Cart {
 
 	public void setCartItemIds(Set<UUID> cartItemIds) {
 		this.cartItemIds = cartItemIds;
+	}
+
+	public double getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 }
