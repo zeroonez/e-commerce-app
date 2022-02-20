@@ -27,4 +27,8 @@ public class ItemFinderService {
 		return new HashSet<>(itemRepository.findAllById(itemIds));
 	}
 
+	public Set<Item> getAll() {
+		return new HashSet<>(itemRepository.findAll());
+	}
+
 }
