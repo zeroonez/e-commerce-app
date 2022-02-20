@@ -8,14 +8,16 @@ import com.ecommerce.module.item.service.ItemService;
 import com.ecommerce.module.item.service.command.CreateItemCommand;
 import com.ecommerce.module.item.service.command.DecreaseItemStockCommand;
 import com.ecommerce.module.item.service.command.IncreaseItemStockCommand;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -59,5 +61,11 @@ public class ItemController {
 	) throws ItemNotFoundException {
 		command.setItemId(itemId);
 		return itemResponseMapper.mapSingle(itemService.increaseItemStock(command));
+	}
+
+	@ExceptionHandler(ItemNotFoundException.class)
+	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
+	public String itemNotFoundExceptionHandler(ItemNotFoundException e){
+		return e.getMessage();
 	}
 }

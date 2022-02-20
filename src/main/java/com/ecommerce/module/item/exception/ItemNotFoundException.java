@@ -1,12 +1,11 @@
 package com.ecommerce.module.item.exception;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import com.ecommerce.common.exception.ApiException;
 
-@ResponseStatus(HttpStatus.BAD_REQUEST)
-public class ItemNotFoundException extends Exception {
+public class ItemNotFoundException extends ApiException {
 
-	public ItemNotFoundException() {
+	@Override
+	protected String getErrorMessage() {
+		return "Item not found in stock";
 	}
-
 }

@@ -1,12 +1,11 @@
 package com.ecommerce.module.cart.exception;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import com.ecommerce.common.exception.ApiException;
 
-@ResponseStatus(HttpStatus.BAD_REQUEST)
-public class CartNotFoundException extends Exception {
+public class CartNotFoundException extends ApiException {
 
-	public CartNotFoundException() {
+	@Override
+	protected String getErrorMessage() {
+		return "Cart not found";
 	}
-
 }

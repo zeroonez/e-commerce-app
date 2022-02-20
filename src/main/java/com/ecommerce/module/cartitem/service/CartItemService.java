@@ -58,4 +58,10 @@ public class CartItemService {
 		cartItemRepository.save(cartItem);
 	}
 
+	public void increaseItemQuantity(@Valid RemoveOrReduceCartItemCommand command) throws CartItemNotFoundException {
+		CartItem cartItem = cartItemFinderService.getByCartIdAndItemId(command.getCartId(), command.getItemId());
+		cartItem.setQuantity(cartItem.getQuantity() + 1);
+		cartItemRepository.save(cartItem);
+	}
+
 }

@@ -1,11 +1,14 @@
 package com.ecommerce.module.item.service.command;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 public class IncreaseItemStockCommand {
 
 	@NotNull
+	@JsonIgnore
 	private UUID itemId;
 
 	@NotNull

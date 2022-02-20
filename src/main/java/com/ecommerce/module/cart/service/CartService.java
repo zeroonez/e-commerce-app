@@ -71,6 +71,7 @@ public class CartService {
 				command.getItemId()
 		));
 		cart.getCartItemIds().remove(removedCartItemId);
+		cart.setTotalPrice(countTotalPrice(cart.getId()));
 		return cartRepository.save(cart);
 	}
 
@@ -81,7 +82,19 @@ public class CartService {
 				cart.getId(),
 				command.getItemId()
 		));
-		return cart;
+		cart.setTotalPrice(countTotalPrice(cart.getId()));
+		return cartRepository.save(cart);
+	}
+
+	public Cart increaseItemFromCart(@Valid RemoveOrReduceItemFromCartCommand command) throws CartNotFoundException,
+			CartItemNotFoundException {
+		Cart cart = cartFinderService.getById(command.getCartId());
+		cartItemService.increaseItemQuantity(new RemoveOrReduceCartItemCommand(
+				cart.getId(),
+				command.getItemId()
+		));
+		cart.setTotalPrice(countTotalPrice(cart.getId()));
+		return cartRepository.save(cart);
 	}
 
 	private double countTotalPrice(UUID cartId) {
