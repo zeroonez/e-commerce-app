@@ -1,0 +1,275 @@
+{
+	"info": {
+		"_postman_id": "e646a407-32be-4939-bd29-2461e82f8ef5",
+		"name": "E-Commerce-app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/cart",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create item",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"iPhone\",\n    \"description\": \"Mobile phone from apple organization\",\n    \"price\": 30000.00,\n    \"stock\": 6\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/item",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"item"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add item to cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"itemId\": \"3ebe7936-5339-4162-a0e7-fdb4e6da134b\",\n    \"quantity\": 5\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/cart/0d74baf7-f708-4545-8d41-5e890c62c4fe/addItem",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cart",
+						"0d74baf7-f708-4545-8d41-5e890c62c4fe",
+						"addItem"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List items",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/item",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"item"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Increase stock of specific item",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"stockToAdd\": 3\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/item/60cfad75-38b8-4183-b384-5982d54c3aeb/increaseStock",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"item",
+						"60cfad75-38b8-4183-b384-5982d54c3aeb",
+						"increaseStock"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Decrease stock of specific item",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"stockToRemove\": 4\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/item/60cfad75-38b8-4183-b384-5982d54c3aeb/decreaseStock",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"item",
+						"60cfad75-38b8-4183-b384-5982d54c3aeb",
+						"decreaseStock"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get details of specific cart ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/cart/557f21a7-594b-4745-9f1a-89fa53f9c844",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cart",
+						"557f21a7-594b-4745-9f1a-89fa53f9c844"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove item from cart",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"itemId\": \"60cfad75-38b8-4183-b384-5982d54c3aeb\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/cart/557f21a7-594b-4745-9f1a-89fa53f9c844/removeItem",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cart",
+						"557f21a7-594b-4745-9f1a-89fa53f9c844",
+						"removeItem"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reduce quantity item by one in cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"itemId\": \"b1605f4b-88be-401a-8327-8e35ea14c9e5\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/cart/e43bdf55-af3b-486c-b6f3-e29573dd5dbb/reduceItem",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cart",
+						"e43bdf55-af3b-486c-b6f3-e29573dd5dbb",
+						"reduceItem"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invrease quantity item by one in cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"itemId\": \"757598fd-c437-406b-96f7-44e47a28dfbf\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/cart/44046de7-1eae-4ac9-9b30-d05ab5bc0a2c/increaseItem",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cart",
+						"44046de7-1eae-4ac9-9b30-d05ab5bc0a2c",
+						"increaseItem"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
